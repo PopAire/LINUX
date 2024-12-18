@@ -1,0 +1,94 @@
+
+genisoimage -o archivo.iso -R -J -V "MiEtiqueta" ~/mi_iso/
+
+---------------------------INSTALAR APLICACION---------
+sudo apt install genisoimage
+
+---------------------------CREAR CARPETA PARA LOS ARCHIVOS----------
+mkdir ~/carpeta_ISO
+
+---------------------------CREAR ISO-------------------
+genisoimage -o nombre.iso ~/carpeta_ISO -V "Etiqueta"
+
+//////////////////////////-OTRAS CONFIGURACIONES-\\\\\\\\\\\\\\\\\\\\\\
+
+-R: Activa Rock Ridge (mejor compatibilidad con sistemas Unix).
+-J: Activa Joliet (mejor compatibilidad con sistemas Windows).
+-V "MiEtiqueta": Especifica una etiqueta para la ISO.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Crear un archivo ISO desde la terminal en Linux es sencillo utilizando herramientas como genisoimage o mkisofs. Aquí te dejo los pasos detallados:
+Paso 1: Instalar herramientas necesarias
+
+Si no tienes instaladas las herramientas, instálalas desde el gestor de paquetes:
+
+    Para Ubuntu/Debian:
+
+sudo apt update
+sudo apt install genisoimage
+
+Para Fedora/RHEL:
+
+sudo dnf install genisoimage
+
+Para Arch Linux:
+
+    sudo pacman -S cdrtools
+
+Paso 2: Prepara los archivos
+
+    Crea una carpeta donde guardarás los archivos que deseas incluir en la ISO:
+
+mkdir ~/mi_iso
+
+Copia los archivos o directorios a esa carpeta:
+
+    cp -r /ruta/a/los/archivos/* ~/mi_iso/
+
+Paso 3: Crear el archivo ISO
+
+Utiliza genisoimage o mkisofs para crear el archivo ISO. Por ejemplo:
+
+    Comando básico:
+
+genisoimage -o archivo.iso ~/mi_iso/
+
+Aquí:
+
+    -o archivo.iso: Define el nombre del archivo ISO de salida.
+    ~/mi_iso/: Es la carpeta que contiene los archivos para la ISO.
+
+Comando avanzado con opciones para un sistema de archivos ISO estándar:
+
+    genisoimage -o archivo.iso -R -J -V "MiEtiqueta" ~/mi_iso/
+
+        -R: Activa Rock Ridge (mejor compatibilidad con sistemas Unix).
+        -J: Activa Joliet (mejor compatibilidad con sistemas Windows).
+        -V "MiEtiqueta": Especifica una etiqueta para la ISO.
+
+Paso 4: Verificar el archivo ISO
+
+Una vez creada la ISO, puedes verificar su contenido con:
+
+mount -o loop archivo.iso /mnt
+ls /mnt
+umount /mnt
+
+Ejemplo completo:
+
+    Crear un directorio con los archivos:
+
+mkdir ~/mi_iso
+echo "Hola, mundo!" > ~/mi_iso/saludo.txt
+
+Crear la ISO:
+
+genisoimage -o saludo.iso -R -J ~/mi_iso/
+
+Montar y verificar:
+
+sudo mount -o loop saludo.iso /mnt
+ls /mnt
+sudo umount /mnt
