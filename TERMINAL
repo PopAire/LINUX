@@ -1,1 +1,19 @@
-ADFSAF
+-------------Combinacion Teclado----------
+
+Clear        Ctrl + L
+
+
+
+-------------Comandos Varios--------------
+
+lsblk        Listar discos en el sistema
+
+        sudo umount /dev/sd?  (disk)
+
+-------------Crear usb Boot desde terminal
+sudo dd if=~/archivo.iso of=/dev/sd? bs=4M status=progress
+
+    if=: Ruta al archivo ISO.
+    of=: Identificador del dispositivo USB.
+    bs=4M: Tamaño del bloque para una copia más rápida.
+    status=progress: Muestra el progreso de la operación.
