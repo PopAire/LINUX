@@ -1,0 +1,7 @@
+≠==≠=======MOSTRAR INFO HAFTWARE======
+
+sudo apt install lshw
+
+sudo lshw | less
+
+=====================
