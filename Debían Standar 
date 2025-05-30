@@ -1,0 +1,19 @@
+≠==========CONECTAR A RED MANUAL =======
+
+ip link
+
+sudo ip link set wlxc025673a6310 up
+
+ip link show wlxc025673a6310
+
+sudo iwlist wlxc025673a6310 scan | grep ESSID
+
+wpa_passphrase "mi-red" "mi-clave" | sudo tee /etc/wpa_supplicant.conf 
+
+sudo wpa_supplicant -B -i wlxc025673a6310 -c /etc/wpa_supplicant.conf
+
+sudo dhclient wlxc025673a6310
+
+ping -c 4 google.com
+
+==============≠======================
